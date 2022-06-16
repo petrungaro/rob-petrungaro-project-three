@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,4 +35,34 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* ***************************************** */
+
+img {
+  display: block;
+  max-width: 100%
+}
+
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.coin-list {
+  width: 100%;
+  border: 2px solid red;
+}
+
+.coin {
+  display: flex;
+  /* LOOK INTO GRID FOR COIN ITEMS */
+  justify-content: center;
+  align-items: center;
+  border: 1px solid magenta
+}
+
+.coin .img-container {
+  max-width: 50px; 
 }
