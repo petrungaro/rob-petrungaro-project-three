@@ -1,10 +1,30 @@
-import { useState } from "react";
+import axios from 'axios';
+import {useState, useEffect} from 'react';
+
 
 
 // form that will take in users search term, also maybe a currency selector?
 const Form = (props) => {
 
     // TODO: Add labels for all the form elements, look into an API call to return all possible base currencies 
+
+    const [vsCurrencyList, setVsCurrencyList] = useState([]);
+
+    useEffect(() => {
+        axios({
+            url: 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies',
+            method: 'get',
+        })
+        .then((response) => {
+            console.log('api call for currency list');
+          // some error handling? if statusText='OK'?... else?
+        
+            setVsCurrencyList(response.data);
+        })
+    
+    }, [])
+
+
 
     // I'll need an onSubmit that will send whatever the user typed plus the currency value up to App to set those values 
         // UPDATE: don't neccesarily need a submit, currently it works just when the user changes any of the inputs
@@ -26,8 +46,18 @@ const Form = (props) => {
                 name="currency" 
                 id="currency"
             >
+                {/* Default base currency values - I want these at the top */}
                 <option value="cad">CAD</option>
                 <option value="usd">USD</option>
+                {/* Mapping through the currency array to provide other base currencies */}
+                {
+                    vsCurrencyList.map((item)=> {
+                        return (
+                            <option key={item} value={item}>{item.toUpperCase()}</option>
+                        )
+                    })
+                }
+
             </select>
 
             <select
