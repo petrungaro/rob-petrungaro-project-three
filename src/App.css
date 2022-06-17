@@ -54,7 +54,17 @@ html { box-sizing: border-box;}
 /* ******************** FORM ***************** */
 
 form {
-  border: 1px solid green;
+  display: flex;
+  gap: 10px;
+
+  /* border: 1px solid green; */
+  padding: 50px;
+  margin: 40px 0;
+}
+
+form input {
+  border: none;
+  border-bottom: 2px solid black;
 }
 
 
@@ -73,7 +83,8 @@ ul, li {
 
 .coin-list {
   width: 100%;
-  border: 2px solid red;
+  border: 2px solid black;
+  padding: 20px;
 }
 
 /* .coin {
@@ -100,17 +111,30 @@ ul, li {
   position: relative;
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr .5fr;
 
   border-bottom: 1px solid black;
   text-align: left;
 }
+
+.coin button {
+  border: none;
+  justify-self: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+
 
 .extra-info {
   display: none;
   position: relative;
   grid-column: 1 / 7;
   background: #F1F1F1;
+
 }
 
 .show {

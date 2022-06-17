@@ -10,6 +10,7 @@ const CoinList = (props) => {
     // make a copy of the array
     const coinData = [...props.coinArray];
     // filter through the array with user-provided search term
+    // TODO - can I make this check against both the name and the symbol?
     const filteredCoins = coinData.filter((coin) => {
         return coin.name.toLowerCase().includes(props.searchTerm.toLowerCase())
     })
