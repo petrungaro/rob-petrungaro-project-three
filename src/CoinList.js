@@ -7,11 +7,9 @@ import Coin from "./Coin";
 
 
 const CoinList = (props) => {
-
+    // make a copy of the array
     const coinData = [...props.coinArray];
-
-    console.log(coinData);
-
+    // filter through the array with user-provided search term
     const filteredCoins = coinData.filter((coin) => {
         return coin.name.toLowerCase().includes(props.searchTerm.toLowerCase())
     })
@@ -23,11 +21,12 @@ const CoinList = (props) => {
         <ul className="coin-list">
             {filteredCoins.slice(0,props.qtyToShow).map((coin) => {
                 return (
+                    // TODO: add a header row to show what the values below are - css grid??
                     <Coin 
-                        key={coin.symbol}
-                        name={coin.name}
-                        symbol={coin.symbol}
-                        image={coin.image}
+                        key={coin.symbol ? coin.symbol : '--'}
+                        name={coin.name ? coin.name : '--'}
+                        symbol={coin.symbol ? coin.symbol : '--'}
+                        image={coin.image ? coin.image : ''}
                         price={
                             coin.current_price 
                             ? coin.current_price.toLocaleString()

@@ -1,7 +1,7 @@
 // structure of individual coin items that will appear in the list
 const Coin = (props) => {
     return (
-
+        // TODO: consider adding a 'more' section that opens up on click, css-grid or flexbox?
         <li className="coin">
             <div className="img-container">
                 <img src={props.image} alt="" />
