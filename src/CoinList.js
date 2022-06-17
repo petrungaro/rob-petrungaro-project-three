@@ -10,6 +10,8 @@ const CoinList = (props) => {
 
     const coinData = [...props.coinArray];
 
+    console.log(coinData);
+
     const filteredCoins = coinData.filter((coin) => {
         return coin.name.toLowerCase().includes(props.searchTerm.toLowerCase())
     })
@@ -19,16 +21,28 @@ const CoinList = (props) => {
         // https://stackoverflow.com/questions/42374873/limit-items-in-a-map-loop
         // limiting how many items of the array to show
         <ul className="coin-list">
-            {filteredCoins.slice(0,10).map((coin) => {
+            {filteredCoins.slice(0,props.qtyToShow).map((coin) => {
                 return (
                     <Coin 
                         key={coin.symbol}
                         name={coin.name}
                         symbol={coin.symbol}
                         image={coin.image}
-                        price={coin.current_price.toLocaleString()}
-                        change24h={coin.price_change_percentage_24h.toFixed(2)}
-                        change7d={coin.price_change_percentage_7d_in_currency.toFixed(2)}
+                        price={
+                            coin.current_price 
+                            ? coin.current_price.toLocaleString()
+                            : '--'
+                        }
+                        change24h={
+                            coin.price_change_percentage_24h
+                            ? coin.price_change_percentage_24h.toFixed(2)
+                            : '--'
+                        }
+                        change7d={
+                            coin.price_change_percentage_7d_in_currency
+                            ? coin.price_change_percentage_7d_in_currency.toFixed(2)
+                            : '--'
+                        }
                     />
                 )
             })}

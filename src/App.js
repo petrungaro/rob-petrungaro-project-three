@@ -20,6 +20,8 @@ const [ coinData, setCoinData ] = useState([]);
 const [searchValue, setSearchValue]  = useState('');
 // TEST - same as above, but for currency selector
 const [currencyValue, setCurrencyValue] = useState('cad');
+// TEST - same as above, but for number of coins to show
+const [qtyShowValue, setQtyShowValue] = useState(10);
 
 // Passed to Form via props
 const inputChange = ( newValue ) => {
@@ -30,6 +32,12 @@ const inputChange = ( newValue ) => {
 const currencyChange = (newValue) => {
   console.log(newValue);
   setCurrencyValue(newValue);
+}
+
+// Passed to Form via props
+const quantityChange = (newValue) => {
+  console.log(newValue);
+  setQtyShowValue(newValue);
 }
 
 
@@ -50,7 +58,7 @@ const currencyChange = (newValue) => {
       params: {
         vs_currency: currencyValue, // ! this will be a variable later on
         order: 'market_cap_desc',
-        per_page: 50,
+        per_page: 200,
         price_change_percentage: '24h,7d',
       }
     })
@@ -75,11 +83,17 @@ const currencyChange = (newValue) => {
         inputVal={searchValue}
         currChange={currencyChange}
         currVal={currencyValue}
-        />
+        qtyChange={quantityChange}
+        qtyVal={qtyShowValue}
+      />
       {/* The CoinList function was running faster than the api call was returned */}
       {/* QUESTION FOR INSTRUCTORS - how do I make sure the component doesn't load until the API call is complete and successful? could I use useEffect inside a component that depends on a state change in it's parent? */}
       { coinData.length > 0 
-        ? <CoinList coinArray={coinData} searchTerm={searchValue} />
+        ? <CoinList 
+            coinArray={coinData} 
+            searchTerm={searchValue} 
+            qtyToShow={qtyShowValue}
+          />
         : <p>no coins</p>
       }
     </div>
