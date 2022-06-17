@@ -6,31 +6,34 @@ import Coin from "./Coin";
         // and then the Coin component is what actually places those props in position, assigns classes to divs, etc??
 
 
-        const CoinList = (props) => {
+const CoinList = (props) => {
 
-            let coinData = props.coinArray;
-            console.log(coinData);
+    const coinData = [...props.coinArray];
 
-            // console.log(props.coinArray[0].current_price.toLocaleString());
-        
-            return (
-                <ul className="coin-list">
-                    {coinData.map((coin) => {
-                        return (
-                            <Coin 
-                                key={coin.symbol}
-                                name={coin.name}
-                                symbol={coin.symbol}
-                                image={coin.image}
-                                price={coin.current_price.toLocaleString()}
-                                change24h={coin.price_change_percentage_24h.toFixed(2)}
-                                change7d={coin.price_change_percentage_7d_in_currency.toFixed(2)}
+    const filteredCoins = coinData.filter((coin) => {
+        return coin.name.toLowerCase().includes(props.searchTerm.toLowerCase())
+    })
 
-                            />
-                        )
-                    })}
-                </ul>
-            );
-        }
-        
-        export default CoinList;
+    return (
+
+        // https://stackoverflow.com/questions/42374873/limit-items-in-a-map-loop
+        // limiting how many items of the array to show
+        <ul className="coin-list">
+            {filteredCoins.slice(0,10).map((coin) => {
+                return (
+                    <Coin 
+                        key={coin.symbol}
+                        name={coin.name}
+                        symbol={coin.symbol}
+                        image={coin.image}
+                        price={coin.current_price.toLocaleString()}
+                        change24h={coin.price_change_percentage_24h.toFixed(2)}
+                        change7d={coin.price_change_percentage_7d_in_currency.toFixed(2)}
+                    />
+                )
+            })}
+        </ul>
+    );
+}
+
+export default CoinList;

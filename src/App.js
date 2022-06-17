@@ -16,6 +16,13 @@ function App() {
     // user input in the text field
     // user selection for the currency 
 const [ coinData, setCoinData ] = useState([]);
+// TEST - pulling the input change up from Form
+const [searchValue, setSearchValue]  = useState('');
+
+const inputChange = ( newValue ) => {
+  console.log(newValue);
+  setSearchValue(newValue);
+}
 
 
   /* API CALL FOR LIST ON LOAD */
@@ -38,7 +45,7 @@ const [ coinData, setCoinData ] = useState([]);
         per_page: 50,
         price_change_percentage: '24h,7d',
       }
-    })
+    }, [])
     .then((response) => {
 
       // some error handling? if statusText='OK'?... else?
@@ -50,19 +57,17 @@ const [ coinData, setCoinData ] = useState([]);
   }, [])
 
 
-
-
   return (
     <div className="App">
       <h1>testing testing 123</h1>
 
+      <Form changeFunc={inputChange} testVal={searchValue}/>
       {/* The CoinList function was running faster than the api call was returned */}
       {/* QUESTION FOR INSTRUCTORS - how do I make sure the component doesn't load until the API call is complete and successful? could I use useEffect inside a component that depends on a state change in it's parent? */}
-      { coinData.length > 0 ?
-      <CoinList 
-        coinArray={coinData}  
-      />
-      : <p>no coins</p>}
+      { coinData.length > 0 
+        ? <CoinList coinArray={coinData} searchTerm={searchValue} />
+        : <p>no coins</p>
+      }
     </div>
   );
 }
