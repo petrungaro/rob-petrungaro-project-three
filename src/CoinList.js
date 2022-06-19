@@ -20,6 +20,17 @@ const CoinList = (props) => {
         // https://stackoverflow.com/questions/42374873/limit-items-in-a-map-loop
         // limiting how many items of the array to show
         <ul className="coin-list">
+
+            <li className="coin header">
+                <h2 className="coin-name-header">Coin</h2>
+                <h2 className="coin-price">Price</h2>
+                <h2 className="change">24h</h2>
+
+            </li>
+
+
+
+
             {filteredCoins.slice(0,props.qtyToShow).map((coin) => {
                 return (
                     // TODO: add a header row to show what the values below are - css grid??
@@ -41,6 +52,51 @@ const CoinList = (props) => {
                         change7d={
                             coin.price_change_percentage_7d_in_currency
                             ? coin.price_change_percentage_7d_in_currency.toFixed(2)
+                            : '--'
+                        }
+                        change30d={
+                            coin.price_change_percentage_30d_in_currency 
+                            ? coin.price_change_percentage_30d_in_currency.toFixed(2)
+                            : '--'
+                        }
+                        marketCap={
+                            coin.market_cap
+                            ? coin.market_cap.toLocaleString()
+                            : '--'
+                        }
+                        marketRank={
+                            coin.market_cap_rank
+                            ? coin.market_cap_rank
+                            : ''
+                        }
+                        ath={
+                            coin.ath
+                            ? coin.ath.toLocaleString()
+                            : '--'
+                        }
+                        athPercent={
+                            coin.ath_change_percentage
+                            ? coin.ath_change_percentage.toFixed(2)
+                            : '--'
+                        }
+                        athDate={
+                            coin.ath_date 
+                            ? new Date(coin.ath_date).toLocaleDateString()
+                            : '--'
+                        }
+                        atl={
+                            coin.atl
+                            ? coin.atl.toLocaleString()
+                            : '--'
+                        }
+                        atlPercent={
+                            coin.atl_change_percentage
+                            ? coin.atl_change_percentage.toFixed(2)
+                            : '--'
+                        }
+                        atlDate={
+                            coin.atl_date
+                            ? new Date(coin.atl_date).toLocaleDateString()
                             : '--'
                         }
                     />

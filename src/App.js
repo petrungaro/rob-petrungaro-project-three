@@ -21,7 +21,7 @@ const [searchValue, setSearchValue]  = useState('');
 // TEST - same as above, but for currency selector
 const [currencyValue, setCurrencyValue] = useState('cad');
 // TEST - same as above, but for number of coins to show
-const [qtyShowValue, setQtyShowValue] = useState(10);
+const [qtyShowValue, setQtyShowValue] = useState(25);
 
 // Passed to Form via props
 const inputChange = ( newValue ) => {
@@ -59,7 +59,7 @@ const quantityChange = (newValue) => {
         vs_currency: currencyValue, // ! this will be a variable later on
         order: 'market_cap_desc',
         per_page: 200,
-        price_change_percentage: '24h,7d',
+        price_change_percentage: '24h,7d,30d',
       }
     })
     .then((response) => {
