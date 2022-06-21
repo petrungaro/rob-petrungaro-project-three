@@ -35,15 +35,15 @@ const Coin = (props) => {
                 <div className="price-change">
                     <div className="details-row">
                         <h3>24h Change: </h3>
-                        <p style={change24hStyle}>{props.change24h} %</p>
+                        <p style={change24hStyle}>{props.change24h}%</p>
                     </div>
                     <div className="details-row">
                         <h3>7-day Change: </h3>
-                        <p style={change7dStyle}>{props.change7d} %</p>
+                        <p style={change7dStyle}>{props.change7d}%</p>
                     </div>
                     <div className="details-row">
                         <h3>30-day Change: </h3>
-                        <p style={change30dStyle}>{props.change30d} %</p>
+                        <p style={change30dStyle}>{props.change30d}%</p>
                     </div>
                 </div>
 

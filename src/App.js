@@ -76,7 +76,7 @@ const quantityChange = (newValue) => {
 
   return (
     <div className="App">
-      <h1>testing testing 123</h1>
+      <h1>coinWatch</h1>
 
       <Form 
         searchChange={inputChange} 
