@@ -28,12 +28,9 @@ const CoinList = (props) => {
 
             </li>
 
-
-
-
             {filteredCoins.slice(0,props.qtyToShow).map((coin) => {
                 return (
-                    // TODO: add a header row to show what the values below are - css grid??
+
                     <Coin 
                         key={coin.symbol ? coin.symbol : '--'}
                         name={coin.name ? coin.name : '--'}
@@ -67,7 +64,7 @@ const CoinList = (props) => {
                         marketRank={
                             coin.market_cap_rank
                             ? coin.market_cap_rank
-                            : ''
+                            : '--'
                         }
                         ath={
                             coin.ath

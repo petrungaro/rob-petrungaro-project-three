@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 /* COMPONENT IMPORTS */
 import Form from './Form';
 import CoinList from './CoinList';
+import News from './News';
 
 
 
@@ -96,6 +97,7 @@ const quantityChange = (newValue) => {
           />
         : <p>no coins</p>
       }
+      <News />
     </div>
   );
 }
