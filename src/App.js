@@ -89,15 +89,17 @@ const quantityChange = (newValue) => {
       />
       {/* The CoinList function was running faster than the api call was returned */}
       {/* QUESTION FOR INSTRUCTORS - how do I make sure the component doesn't load until the API call is complete and successful? could I use useEffect inside a component that depends on a state change in it's parent? */}
-      { coinData.length > 0 
-        ? <CoinList 
-            coinArray={coinData} 
-            searchTerm={searchValue} 
-            qtyToShow={qtyShowValue}
-          />
-        : <p>no coins</p>
-      }
-      <News />
+      <div className="flex-container">
+        { coinData.length > 0
+          ? <CoinList
+              coinArray={coinData}
+              searchTerm={searchValue}
+              qtyToShow={qtyShowValue}
+            />
+          : <p>no coins</p>
+        }
+        <News />
+      </div>
     </div>
   );
 }

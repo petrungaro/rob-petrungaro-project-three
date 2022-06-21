@@ -26,6 +26,15 @@ const News = () => {
     }, [])
 
 
+    // const truncate = (str, n) => {
+        
+    //     str.length > n 
+    //     ? str.substring(0, n)
+    //     : str
+    // }
+
+
+
 
 
     return (
@@ -40,12 +49,17 @@ const News = () => {
 
 
                 return (
-                    <article>
+                    <article key={article.pubDate}>
                         <div className="news-image-container">
                             <img src={article.image_url ? article.image_url : blockimage } alt="" />
                         </div>
                         <div className="content">
-                            <h3>{article.title ? article.title : null}</h3>
+                            <h3>{article.title 
+                                ? article.title.length > 75 
+                                    ? article.title.substring(0,75) + '...'
+                                    : article.title
+                                : null}
+                            </h3>
                             <a href={article.link ? article.link : null} target="_blank">Read More</a>
                         </div>
                     </article>
