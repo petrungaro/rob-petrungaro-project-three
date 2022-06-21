@@ -1,10 +1,5 @@
 import Coin from "./Coin";
 
-// list that will hold the individual coin items
-//  ? I should import Coin into this component? 
-    //  So CoinList will receive the response.data array as props from App, and then I will run a .map on the array, and put the props inside a <Coin price=array.price image='link' ..etc?  />
-        // and then the Coin component is what actually places those props in position, assigns classes to divs, etc??
-
 
 const CoinList = (props) => {
     // make a copy of the array
@@ -17,15 +12,12 @@ const CoinList = (props) => {
 
     return (
 
-        // https://stackoverflow.com/questions/42374873/limit-items-in-a-map-loop
-        // limiting how many items of the array to show
         <ul className="coin-list">
 
             <li className="coin header">
                 <h2 className="coin-name-header">Coin</h2>
                 <h2 className="coin-price">Price</h2>
                 <h2 className="change">24h</h2>
-
             </li>
 
             {filteredCoins.slice(0,props.qtyToShow).map((coin) => {
