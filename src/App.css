@@ -200,7 +200,6 @@ ul, li {
   max-height: 0px;
   position: relative;
   grid-column: 1 / 7;
-  /* background: #F1F1F1; */
   transition: all .4s ease-in-out;
 
   display:flex;
@@ -233,8 +232,6 @@ ul, li {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  /* align-items: center; */
-  /* border-bottom: 1px solid gray; */
 }
 
 .stacked-detail .date {

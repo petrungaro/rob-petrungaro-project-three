@@ -66,7 +66,7 @@ const quantityChange = (newValue) => {
           qtyVal={qtyShowValue}
       /></header>
 
-      <div className="flex-container">
+      <main className="flex-container">
         { coinData.length > 0
           ? <CoinList
               coinArray={coinData}
@@ -76,7 +76,7 @@ const quantityChange = (newValue) => {
           : <p>Something went wrong, please try again</p>
         }
         <News />
-      </div>
+      </main>
       <Footer />
     </div>
   );

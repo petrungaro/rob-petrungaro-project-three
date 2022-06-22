@@ -18,7 +18,7 @@ const Coin = (props) => {
     return (
         <li className="coin">
             <div className="img-container">
-                <img src={props.image} alt="" />
+                <img src={props.image} alt={`Logo for ${props.name}`} />
             </div>
             <p className="coin-symbol">{props.symbol.toUpperCase()}</p>
             <p className="coin-name">{props.name}</p>

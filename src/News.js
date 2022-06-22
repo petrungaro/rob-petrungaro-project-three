@@ -35,7 +35,11 @@ const News = () => {
                             <img src={article.image_url 
                                 ? article.image_url 
                                 : blockimage 
-                                } alt="" />
+                                } 
+                                alt={article.title}
+                                onError={({currentTarget})=>{
+                                    currentTarget.src=blockimage
+                                }} />
                         </div>
                         <div className="content">
                             <h3>{article.title 
