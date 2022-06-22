@@ -40,7 +40,7 @@ const quantityChange = (newValue) => {
       params: {
         vs_currency: currencyValue, 
         order: 'market_cap_desc',
-        per_page: 200,
+        per_page: 500,
         price_change_percentage: '24h,7d,30d',
       }
     })
